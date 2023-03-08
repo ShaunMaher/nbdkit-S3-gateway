@@ -22,7 +22,7 @@ docker-image-build:
   stage: docker-build
   extends: .docker:build-image-from-dockerfile
   variables:
-    IMAGE_NAME: plasma
+    IMAGE_NAME: nbdkit
     DOCKERFILE_NAME: Dockerfile
     #BUILD_ARGS: "--build-arg GIT_TOKEN=${GIT_TOKEN} --build-arg GIT_LOGIN_USER=${GIT_LOGIN_USER} --build-arg PROJECT_NAME=${PROJECT_NAME} --build-arg PROJECT_ID=${PROJECT_ID} --build-arg CODENAME=${CODENAME} --build-arg CI_API_V4_URL=${CI_API_V4_URL} --build-arg CI_SERVER_HOST=${CI_SERVER_HOST}"
   rules:
@@ -32,7 +32,7 @@ docker-image-push:
   stage: docker-push
   extends: .docker:push-image-to-registry
   variables:
-    IMAGE_NAME: plasma
+    IMAGE_NAME: nbdkit
     DOCKERFILE_NAME: Dockerfile
     #BUILD_ARGS: "--build-arg GIT_TOKEN=${GIT_TOKEN} --build-arg GIT_LOGIN_USER=${GIT_LOGIN_USER} --build-arg PROJECT_NAME=${PROJECT_NAME} --build-arg PROJECT_ID=${PROJECT_ID} --build-arg CODENAME=${CODENAME} --build-arg CI_API_V4_URL=${CI_API_V4_URL} --build-arg CI_SERVER_HOST=${CI_SERVER_HOST}"
   rules:
