@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-nbdkit S3 
+sleep 3600
