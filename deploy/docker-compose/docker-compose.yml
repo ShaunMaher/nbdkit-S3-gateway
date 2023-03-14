@@ -7,9 +7,9 @@ services:
     environment:
       TZ: Australia/Melbourne
       S3_ENDPOINT_URL: https://s3.ap-southeast-2.wasabisys.com
-      #S3_ACCESSKEY: ""
-      #S3_SECRETKEY: ""
-      #S3_BUCKET: ""
+      S3_ACCESSKEY: ${S3_ACCESSKEY}
+      S3_SECRETKEY: ${S3_SECRETKEY}
+      S3_BUCKET: ${S3_BUCKET}
       # Files in the bucket will be prefixed with this string
       S3_KEY: disk
       # Size of the files/blocks that will be stored in S3
