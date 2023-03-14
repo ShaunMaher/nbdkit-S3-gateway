@@ -1,6 +1,6 @@
 version: '3.6'
 services:
-  omnibus:
+  gateway:
     image: 'cr.ghanima.net/applications/nbdkit-s3-gateway/nbdkit:latest'
     restart: always
     hostname: 'nbdkit-S3-gateway'
