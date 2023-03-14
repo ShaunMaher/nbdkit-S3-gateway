@@ -1,4 +1,12 @@
 # nbdkit-S3-gateway
+This project aims to use nbdkit's ability to present a block device backed by
+objects in an S3 bucket as a service an NBD Client can connect to.
+
+The NBD Client will then present a block device that will have a ZFS zpool
+created on it, which will in turn be used as a target for backups of live ZFS
+datasets (`zfs send` `zfs recv`).
+
+The goal is thin incremental ZFS dataset backups to cheap offsite cloud storage.
 
 ## Docker Image
 ### Environment Variables
