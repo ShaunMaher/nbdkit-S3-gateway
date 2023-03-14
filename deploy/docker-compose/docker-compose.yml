@@ -13,7 +13,7 @@ services:
       # Files in the bucket will be prefixed with this string
       S3_KEY: disk
       # Size of the files/blocks that will be stored in S3
-      S3_OBJECT_SIZE: 1M
+      S3_OBJECT_SIZE: 128k
       # Total size of the virtual block device
       DEVICE_SIZE: 500G
     ports:
