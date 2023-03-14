@@ -16,5 +16,5 @@ services:
       S3_OBJECT_SIZE: 1M
       # Total size of the virtual block device
       DEVICE_SIZE: 500G
-    # ports:
-    #   - '80:80'
+    ports:
+      - '9001:9001'
