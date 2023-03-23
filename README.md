@@ -8,9 +8,16 @@ datasets (`zfs send` `zfs recv`).
 
 The goal is thin incremental ZFS dataset backups to cheap offsite cloud storage.
 
+## Experiment 1 - nbdkit and the included S3 plugin
+This worked but seemed very slow.
+
+## Experiment 2 - nbdkit and s3backer plugin
+
 ## Docker Image
 ### Environment Variables
 * `DEVICE_SIZE`: Total size of the virtual block device
+* `DEBUG_HTTP`: Ask s3backer to write all it's HTTP request and response headers
+  to the log.
 * `S3_ACCESSKEY`: S3 Access Key
 * `S3_BUCKET`: S3 bucket name
 * `S3_ENDPOINT_URL`: S3 endpoint URL (including `https://`)
@@ -23,6 +30,8 @@ The goal is thin incremental ZFS dataset backups to cheap offsite cloud storage.
 * `TCP_PORT`: The TCP port that the NBD server will listen on
 
 ## Suitable Wasabi Policy
+This might be overkill but it works.  Trimming it down will be a future
+experiment.
 ```json
 {
   "Version": "2012-10-17",
