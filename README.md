@@ -14,10 +14,51 @@ The goal is thin incremental ZFS dataset backups to cheap offsite cloud storage.
 * `S3_ACCESSKEY`: S3 Access Key
 * `S3_BUCKET`: S3 bucket name
 * `S3_ENDPOINT_URL`: S3 endpoint URL (including `https://`)
-* `S3_KEY`: The block device is made up objects in the S3 storage.  All objects
-  will be prefixed with this value, allowing the same bucket to be used by
-  multiple virtual block devices.  This value is also used as the "export name"
-  of the NBD device.
+* `S3_PREFIX`: The block device is made up objects in the S3 storage.
+  All objects will be prefixed with this value, allowing the same bucket to be
+  used by multiple virtual block devices.  This value is also used as the
+  "export name" of the NBD device.
 * `S3_OBJECT_SIZE`: The size of the indervidual objects in the S3 storage.
 * `S3_SECRETKEY`: The secret key for accessing the bucket
 * `TCP_PORT`: The TCP port that the NBD server will listen on
+
+## Suitable Wasabi Policy
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AddCannedAcl",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::100000190796:user/ph3.local"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:ListBucket",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::syncoid-ph3-local/*"
+    },
+    {
+      "Sid": "AddCannedAcl",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::100000190796:user/ph3.local"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:ListBucket",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::syncoid-ph3-local"
+    }
+  ]
+}
+```

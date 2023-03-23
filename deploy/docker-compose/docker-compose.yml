@@ -19,3 +19,4 @@ services:
       DEVICE_SIZE: 500G
     ports:
       - '9001:9001'
+      - '9002:9002'

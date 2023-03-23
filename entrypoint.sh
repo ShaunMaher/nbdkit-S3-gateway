@@ -3,6 +3,7 @@
 DEVICE_SIZE=${DEVICE_SIZE:-100g}
 S3_OBJECT_SIZE=${S3_OBJECT_SIZE:-256k}
 S3_PREFIX=${S3_PREFIX:-disk}
+DEBUG_HTTP=${DEBUG_HTTP:-false}
 
 # nbdkit S3 \
 #   --foreground \
@@ -41,7 +42,7 @@ nbdkit s3backer \
   blockCacheNumProtected=1000 \
   timeout=90 \
   size="${DEVICE_SIZE}" \
-  debug-http=true \
+  debug-http=${DEBUG_HTTP} \
   prefix="${S3_PREFIX}" \
   "${S3_BUCKET}"
 
