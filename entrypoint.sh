@@ -43,6 +43,7 @@ nbdkit s3backer \
   timeout=90 \
   size="${DEVICE_SIZE}" \
   debug-http=${DEBUG_HTTP} \
+  reset-mounted-flag=true \
   prefix="${S3_PREFIX}" \
   "${S3_BUCKET}"
 
