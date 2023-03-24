@@ -12,7 +12,7 @@ services:
       S3_SECRETKEY: ${S3_SECRETKEY}
       S3_BUCKET: ${S3_BUCKET}
       # Files in the bucket will be prefixed with this string
-      S3_KEY: disk
+      S3_PREFIX: disk
       # Size of the files/blocks that will be stored in S3
       S3_OBJECT_SIZE: 128k
       # Total size of the virtual block device
