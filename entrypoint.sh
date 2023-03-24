@@ -5,20 +5,6 @@ S3_OBJECT_SIZE=${S3_OBJECT_SIZE:-256k}
 S3_PREFIX=${S3_PREFIX:-disk}
 DEBUG_HTTP=${DEBUG_HTTP:-false}
 
-# nbdkit S3 \
-#   --foreground \
-#   --port=${TCP_PORT:-9001} \
-#   --verbose \
-#   --new-style \
-#   --export-name "${S3_PREFIX}" \
-#   access-key="${S3_ACCESSKEY}" \
-#   bucket="${S3_BUCKET}" \
-#   endpoint-url="${S3_ENDPOINT_URL}" \
-#   key="${S3_PREFIX}" \
-#   object-size="${S3_OBJECT_SIZE}" \
-#   secret-key="${S3_SECRETKEY}" \
-#   size="${DEVICE_SIZE}"
-
 echo "${S3_ACCESSKEY}:${S3_SECRETKEY}" > /tmp/.s3b_passwd
 
 while true; do
@@ -46,13 +32,6 @@ while true; do
     debug-http=${DEBUG_HTTP} \
     prefix="${S3_PREFIX}" \
     "${S3_BUCKET}"
-
-  #s3backer \
-  #  --nbd \
-  #  --size="${DEVICE_SIZE}" \
-  #  --blockSize=${S3_OBJECT_SIZE} \
-  #  --listBlocks \
-  #  --listBlocksThreads=50
 
   sleep 30
 done
