@@ -44,6 +44,7 @@ nbdkit s3backer \
   size="${DEVICE_SIZE}" \
   debug-http=${DEBUG_HTTP} \
   prefix="${S3_PREFIX}" \
+  force=true \
   "${S3_BUCKET}"
 
 #s3backer \
