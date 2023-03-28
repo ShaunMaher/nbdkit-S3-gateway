@@ -28,7 +28,9 @@ user=root
 priority=1
 stopasgroup=false
 stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes = 0
 stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes = 0
 command=nbdkit s3backer --foreground --port=${THIS_TCP_PORT} ${VERBOSE} --new-style --export-name "${S3_PREFIX}${i}" baseURL="${S3_ENDPOINT_URL}" accessId="${S3_ACCESSKEY}" accessFile=/tmp/.s3b_passwd blockSize="${S3_OBJECT_SIZE}" listBlocks=true listBlocksThreads=50 ssl=true blockCacheSize=20000 blockCacheFile=/tmp/.s3b_cache blockCacheWriteDelay=15000 blockCacheThreads=4 blockCacheRecoverDirtyBlocks=true blockCacheNumProtected=1000 timeout=90 size="${DEVICE_SIZE}" debug-http=${DEBUG_HTTP} prefix="${S3_PREFIX}${i}" "${S3_BUCKET}"
 
 EOF
