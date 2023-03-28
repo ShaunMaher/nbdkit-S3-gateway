@@ -9,6 +9,8 @@ TCP_PORT=${TCP_PORT:-9000}
 VERBOSE="${VERBOSE}"
 CONF="${CONF:-/etc/supervisor/conf.d/supervisord.conf}"
 
+echo "${S3_ACCESSKEY}:${S3_SECRETKEY}" > /tmp/.s3b_passwd
+
 cat supervisord_header.conf >"${CONF}"
 
 GROUP=""
