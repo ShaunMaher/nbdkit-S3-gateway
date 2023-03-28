@@ -38,5 +38,5 @@ COPY entrypoint.sh /entrypoint.sh
 COPY reset-mounted-flag.sh /reset-mounted-flag.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-#ENTRYPOINT /entrypoint.sh
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf", "-n"]
+ENTRYPOINT /entrypoint.sh
+#CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf", "-n"]
