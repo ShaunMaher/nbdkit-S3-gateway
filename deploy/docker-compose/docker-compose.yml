@@ -15,8 +15,11 @@ services:
       S3_PREFIX: disk
       # Size of the files/blocks that will be stored in S3
       S3_OBJECT_SIZE: 128k
-      # Total size of the virtual block device
-      DEVICE_SIZE: 500G
+      # Total size of each virtual block device.  If you use the three devices
+      #  for ZFS RAIDZ or RAID6, you will use x3 storage usage at S3
+      #  provider, 2x space available to use.
+      DEVICE_SIZE: 250G
     ports:
       - '9001:9001'
       - '9002:9002'
+      - '9003:9003'
