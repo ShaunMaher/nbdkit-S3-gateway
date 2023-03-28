@@ -36,7 +36,7 @@ COPY --from=builder /usr/lib/x86_64-linux-gnu/nbdkit/plugins/nbdkit-s3backer-plu
 
 COPY entrypoint.sh /entrypoint.sh
 COPY reset-mounted-flag.sh /reset-mounted-flag.sh
-COPY supervisor.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 #ENTRYPOINT /entrypoint.sh
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf", "-n"]
