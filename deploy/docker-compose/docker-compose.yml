@@ -5,6 +5,7 @@ services:
     restart: always
     hostname: 'nbdkit-S3-gateway'
     environment:
+      TCP_PORT: 10000
       TZ: Australia/Melbourne
       # S3_ENDPOINT_URL must include the trailing "/"
       S3_ENDPOINT_URL: https://s3.ap-southeast-2.wasabisys.com/
@@ -19,7 +20,8 @@ services:
       #  for ZFS RAIDZ or RAID6, you will use x3 storage usage at S3
       #  provider, 2x space available to use.
       DEVICE_SIZE: 250G
+      DEVICE_COUNT: 1
     ports:
-      - '9001:9001'
-      - '9002:9002'
-      - '9003:9003'
+      - '10001:10001'
+      # '9002:9002'
+      # '9003:9003'
