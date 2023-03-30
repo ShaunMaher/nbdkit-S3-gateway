@@ -13,6 +13,10 @@ echo "${S3_ACCESSKEY}:${S3_SECRETKEY}" > /tmp/.s3b_passwd
 
 cat supervisord_header.conf >"${CONF}"
 
+echo "nameserver 127.0.0.1" >/etc/resolv.conf
+echo "nameserver 1.1.1.1" >>/etc/resolv.conf
+echo "nameserver 8.8.8.8" >>/etc/resolv.conf
+
 GROUP=""
 for (( i=1; i<=$DEVICE_COUNT; i++ )); do
   THIS_TCP_PORT=$(( $TCP_PORT + $i ))
@@ -34,7 +38,6 @@ stderr_logfile_maxbytes = 0
 command=nbdkit s3backer --foreground --port=${THIS_TCP_PORT} ${VERBOSE} --new-style --export-name "${S3_PREFIX}${i}" baseURL="${S3_ENDPOINT_URL}" accessId="${S3_ACCESSKEY}" accessFile=/tmp/.s3b_passwd blockSize="${S3_OBJECT_SIZE}" listBlocks=true listBlocksThreads=50 ssl=true blockCacheSize=20000 blockCacheFile=/tmp/.s3b_cache${i} blockCacheWriteDelay=15000 blockCacheThreads=4 blockCacheRecoverDirtyBlocks=true blockCacheNumProtected=1000 timeout=90 size="${DEVICE_SIZE}" debug-http=${DEBUG_HTTP} prefix="${S3_PREFIX}${i}" "${S3_BUCKET}"
 
 EOF
-
 done
 
 GROUP=$(printf '%s' "${GROUP}"| sed 's/^,//g')

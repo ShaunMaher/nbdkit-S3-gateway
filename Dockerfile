@@ -29,7 +29,10 @@ RUN apt update; apt install -y \
   nbdkit-plugin-dev \
   libfuse2 \
   libcurl4 \
-  supervisor
+  supervisor \
+  dnsmasq
+
+RUN useradd -r nbdkit
 
 COPY --from=builder /usr/bin/s3backer /usr/bin/s3backer
 COPY --from=builder /usr/lib/x86_64-linux-gnu/nbdkit/plugins/nbdkit-s3backer-plugin.* /usr/lib/x86_64-linux-gnu/nbdkit/plugins/
